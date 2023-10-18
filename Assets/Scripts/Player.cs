@@ -35,6 +35,18 @@ public class Player : MonoBehaviour
             Jump();
         }
 
+        
+        /*/if(GroundSensor._isGrounded == true)
+        {
+            _animator.SetBool("IsJumping", false);
+        }
+        else
+        {
+            _animator.SetBool("IsJumping", true);
+        }*/
+
+        _animator.SetBool("IsJumping", !GroundSensor._isGrounded);
+
         if(Input.GetButtonDown("Fire2"))
         {
             _director.Play();
@@ -52,24 +64,19 @@ public class Player : MonoBehaviour
     {
         _playerInputH = Input.GetAxis("Horizontal");
 
-        if(_playerInputH != 0)
-        {
-            _animator.SetBool("IsRunning", true);
-        }
-
-        if(_playerInputH == 0)
-        {
-            _animator.SetBool("IsRunning", false);
-        }
-
         if(_playerInputH < 0)
         {
             transform.rotation = Quaternion.Euler (0, 180, 0);
+            _animator.SetBool("IsRunning", true);
         }
-
-        if(_playerInputH > 0)
+        else if(_playerInputH > 0)
         {
             transform.rotation = Quaternion.Euler (0, 0, 0);
+            _animator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            _animator.SetBool("IsRunning", false);
         }
 
        
@@ -81,7 +88,11 @@ public class Player : MonoBehaviour
     void Jump()
     {
         _rBody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
+        
+    }
 
-        _animator.SetBool("IsJumping", true);
+    public void SignalTest()
+    {
+        Debug.Log("Señal recivida");
     }
 }

@@ -8,10 +8,10 @@ public class GroundSensor : MonoBehaviour
 
     private Animator _animator; 
 
-    void Start()
+    /*void Awake()
     {
         _animator = GameObject.Find("knight").GetComponent<Animator>();
-    }
+    }*/
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -19,7 +19,7 @@ public class GroundSensor : MonoBehaviour
         {
             _isGrounded = true;
             
-            _animator.SetBool("IsJumping", false);
+            //_animator.SetBool("IsJumping", false);
         }
     }
 
