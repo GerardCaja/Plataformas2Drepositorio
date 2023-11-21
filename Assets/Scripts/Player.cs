@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         _rBody2D = GetComponent<Rigidbody2D>();
+        SoundManager.instance.Music();
         //_sensor = GetComponentInChildren<GroundSensor>();
 
         Debug.Log(GameManager.instance.vidas);
@@ -105,6 +106,23 @@ public class Player : MonoBehaviour
         {
             GameManager.instance.GameOver();
             SoundManager.instance.DeathZone();
+
+            for (int i = 0; i < 3; i++)
+            {
+                GameManager.instance.ReducirCorazonesUI();
+            }
+        }
+
+        if (collider.gameObject.layer == 7)
+        {
+            collider.gameObject.GetComponent<Animator>().SetTrigger("Explosion");
+        }
+
+        if (collider.gameObject.layer == 8)
+        {
+            collider.gameObject.SetActive(false);
+            SoundManager.instance.Star();
+            GameManager.instance.AumentarEstrellasUI();
         }
     }
 }
