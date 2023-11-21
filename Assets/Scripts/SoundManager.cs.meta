@@ -3,7 +3,11 @@ guid: 7e3d37f0adf64b54e9f16a2aacaf5a70
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - deathZone: {fileID: 8300000, guid: e90df87ebc8d5234598385a347a522b6, type: 3}
+  - bomb: {fileID: 8300000, guid: e4cdd3afcbb516f43929bbc3f8cdad8d, type: 3}
+  - star: {fileID: 8300000, guid: e90df87ebc8d5234598385a347a522b6, type: 3}
+  - music: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
